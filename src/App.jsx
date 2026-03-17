@@ -65,7 +65,7 @@ export default function App() {
         <div>
             <BookTracker bookTitle="The Great Gatsby" totalPages={180} />
             <BookTracker bookTitle="To Kill a Mockingbird" totalPages={281} />
-            <BookTracker bookTitle="1984" totalPages={328} />
+            <BookTracker bookTitle="1984" totalPages={358} />
             <BookTracker bookTitle="The Catcher in the Rye" totalPages={214} />
         </div>
     );
