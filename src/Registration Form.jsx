@@ -126,6 +126,19 @@ function RegistrationForm() {
         alignItems: "center",
         wrap: "wrap"
     };
+    const errorStyle = {
+        color: "red",
+        fontSize: "0.9em",
+        marginTop: "-8px",
+        marginBottom: "10px"
+    };
+    const radioLabelStyle = {
+        marginRight: "15px",
+        fontWeight: "bold",
+        color: "#555",
+        width: "100%",
+        padding: "8px"
+    };
     return (
         <div style={formStyle}>
             <h2 style={titleStyle}>Student Registration Form</h2>
@@ -134,45 +147,45 @@ function RegistrationForm() {
                 <div style={{ marginBottom: "10px" }}>
                     <label style={labelStyle}>Name:</label><br />
                     <input type="text" name="name" value={form.name} onChange={handleChange} style={inputStyle} />
-                    {errors.name && <span style={{ color: "red" }}>{errors.name}</span>}
+                    {errors.name && <span style={errorStyle}>{errors.name}</span>}
                 </div>
 
                 <div style={{ marginBottom: "10px" }}>
                     <label style={labelStyle}>Roll Number:</label><br />
                     <input type="text" name="rollNumber" value={form.rollNumber} onChange={handleChange} style={inputStyle} />
-                    {errors.rollNumber && <span style={{ color: "red" }}>{errors.rollNumber}</span>}
+                    {errors.rollNumber && <span style={errorStyle}>{errors.rollNumber}</span>}
                 </div>
 
                 <div style={{ marginBottom: "10px" }}>
                     <label style={labelStyle}>Department:</label><br />
-                    <select name="department" value={form.department} onChange={handleChange} style={inputStyle}>
-                        <option value="Computer Science" style={inputStyle}>Computer Science</option>
-                        <option value="Software Engineering" style={inputStyle}>Software Engineering</option>
-                        <option value="Information Technology" style={inputStyle}>Information Technology</option>
-                        <option value="Artificial Intelligence" style={inputStyle}>Artificial Intelligence</option>
-                        <option value="Cybersecurity" style={inputStyle}>Cybersecurity</option>
-                        <option value="Data Science" style={inputStyle}>Data Science</option>
-                        <option value="Electrical Engineering" style={inputStyle}>Electrical Engineering</option>
-                        <option value="Mechanical Engineering" style={inputStyle}>Mechanical Engineering</option>
-                        <option value="Civil Engineering" style={inputStyle}>Civil Engineering</option>
+                    <select name="department" value={form.department} onChange={handleChange} style={radioLabelStyle}>
+                        <option value="Computer Science" style={radioLabelStyle}>Computer Science</option>
+                        <option value="Software Engineering" style={radioLabelStyle}>Software Engineering</option>
+                        <option value="Information Technology" style={radioLabelStyle}>Information Technology</option>
+                        <option value="Artificial Intelligence" style={radioLabelStyle}>Artificial Intelligence</option>
+                        <option value="Cybersecurity" style={radioLabelStyle}>Cybersecurity</option>
+                        <option value="Data Science" style={radioLabelStyle}>Data Science</option>
+                        <option value="Electrical Engineering" style={radioLabelStyle}>Electrical Engineering</option>
+                        <option value="Mechanical Engineering" style={radioLabelStyle}>Mechanical Engineering</option>
+                        <option value="Civil Engineering" style={radioLabelStyle}>Civil Engineering</option>
                     </select>
                 </div>
 
                 <div style={{ marginBottom: "10px" }}>
                     <label style={labelStyle}>Year:</label><br />
                     <input type="text" name="year" value={form.year} onChange={handleChange} style={inputStyle} />
-                    {errors.year && <span style={{ color: "red" }}>{errors.year}</span>}
+                    {errors.year && <span style={errorStyle}>{errors.year}</span>}
                 </div>
 
                 <div style={{ marginBottom: "10px" }}>
                     <label style={labelStyle}>CGPA:</label><br />
                     <input type="number" name="cgpa" value={form.cgpa} onChange={handleChange} step="0.01" style={inputStyle} />
-                    {errors.cgpa && <span style={{ color: "red" }}>{errors.cgpa}</span>}
+                    {errors.cgpa && <span style={errorStyle}>{errors.cgpa}</span>}
                 </div>
 
                 <div style={{ marginBottom: "10px" }}>
                     <label style={checkboxLabelStyle}>
-                        <input type="checkbox" name="isActive" checked={form.isActive} onChange={handleChange} style={checkboxStyle} /> Active Student
+                        <span style={checkboxLabelStyle}>Active Student:</span> <input type="checkbox" name="isActive" checked={form.isActive} onChange={handleChange} style={checkboxStyle} /> 
                     </label>
                 </div>
 
@@ -186,10 +199,6 @@ function RegistrationForm() {
                     <span style={checkboxLabelStyle}>Coding Club{" "}</span><input type="checkbox" name="extracurriculars" value="Coding Club" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Coding Club")} style={checkboxStyle} />
                     <span style={checkboxLabelStyle}>Robotics</span><input type="checkbox" name="extracurriculars" value="Robotics" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Robotics")} style={checkboxStyle} />
 
-                </div>
-
-                <div style={{ marginBottom: "10px" }}>
-                    <label style={labelStyle}>Grade: {grade}</label>
                 </div>
 
                 <button type="submit" style={{ marginTop: "10px", padding: "10px 20px", backgroundColor: "#5051a5", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}>
