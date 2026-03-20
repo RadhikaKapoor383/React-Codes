@@ -6,7 +6,7 @@ function UserProfile() {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/users/1")
+        fetch("")
             .then(response => response.json())
             .then(data => {
                 setUser(data);
@@ -25,7 +25,7 @@ function UserProfile() {
     if (error !== "") {
         return (
             <>
-                <p style={{ color: "red" }}>{error}</p>);
+                <p style={{ color: "red" }}>{error}</p>
                 <button onClick={() => window.location.reload()}>Reload 🔄</button>
             </>
             );
