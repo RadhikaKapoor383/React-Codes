@@ -91,90 +91,124 @@ function RegistrationForm() {
         marginBottom: "20px",
         color: "#333"
     };
-
+    const labelStyle = {
+        display: "inline-block",
+        marginBottom: "5px",
+        fontWeight: "bold",
+        color: "#555"
+    }
+    const checkboxLabelStyle = {
+        marginLeft: "1px",
+        marginRight: "2px",
+        fontWeight: "bold",
+        color: "#555",
+        marginBottom: "10px",
+        gap: "15px", 
+        display: "inline-flex",
+        alignItems: "center",
+        wrap: "wrap"
+    }
+    const inputStyle = {
+        width: "100%",
+        padding: "8px",
+        boxSizing: "border-box",
+        marginBottom: "10px",
+        border: "1px solid #ccc",
+        borderRadius: "4px"
+    };
+    const checkboxStyle = {
+        marginRight: "10px",
+        marginLeft: "1px",
+        transform: "scale(1.2)",
+        marginBottom: "10px",
+        gap: "15px", 
+        display: "inline-flex",
+        alignItems: "center",
+        wrap: "wrap"
+    };
     return (
         <div style={formStyle}>
             <h2 style={titleStyle}>Student Registration Form</h2>
 
             <form onSubmit={handleSubmit}>
                 <div style={{ marginBottom: "10px" }}>
-                    <label>Name:</label><br />
-                    <input type="text" name="name" value={form.name} onChange={handleChange} style={{ width: "100%", padding: "8px", boxSizing: "border-box" }} />
+                    <label style={labelStyle}>Name:</label><br />
+                    <input type="text" name="name" value={form.name} onChange={handleChange} style={inputStyle} />
                     {errors.name && <span style={{ color: "red" }}>{errors.name}</span>}
                 </div>
 
                 <div style={{ marginBottom: "10px" }}>
-                    <label>Roll Number:</label><br />
-                    <input type="text" name="rollNumber" value={form.rollNumber} onChange={handleChange} style={{ width: "100%", padding: "8px", boxSizing: "border-box" }} />
+                    <label style={labelStyle}>Roll Number:</label><br />
+                    <input type="text" name="rollNumber" value={form.rollNumber} onChange={handleChange} style={inputStyle} />
                     {errors.rollNumber && <span style={{ color: "red" }}>{errors.rollNumber}</span>}
                 </div>
 
                 <div style={{ marginBottom: "10px" }}>
-                    <label>Department:</label><br />
-                    <select name="department" value={form.department} onChange={handleChange} style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}>
-                        <option value="Computer Science">Computer Science</option>
-                        <option value="Software Engineering">Software Engineering</option>
-                        <option value="Information Technology">Information Technology</option>
-                        <option value="Artificial Intelligence">Artificial Intelligence</option>
-                        <option value="Cybersecurity">Cybersecurity</option>
-                        <option value="Data Science">Data Science</option>
-                        <option value="Electrical Engineering">Electrical Engineering</option>
-                        <option value="Mechanical Engineering">Mechanical Engineering</option>
-                        <option value="Civil Engineering">Civil Engineering</option>
+                    <label style={labelStyle}>Department:</label><br />
+                    <select name="department" value={form.department} onChange={handleChange} style={inputStyle}>
+                        <option value="Computer Science" style={inputStyle}>Computer Science</option>
+                        <option value="Software Engineering" style={inputStyle}>Software Engineering</option>
+                        <option value="Information Technology" style={inputStyle}>Information Technology</option>
+                        <option value="Artificial Intelligence" style={inputStyle}>Artificial Intelligence</option>
+                        <option value="Cybersecurity" style={inputStyle}>Cybersecurity</option>
+                        <option value="Data Science" style={inputStyle}>Data Science</option>
+                        <option value="Electrical Engineering" style={inputStyle}>Electrical Engineering</option>
+                        <option value="Mechanical Engineering" style={inputStyle}>Mechanical Engineering</option>
+                        <option value="Civil Engineering" style={inputStyle}>Civil Engineering</option>
                     </select>
                 </div>
 
                 <div style={{ marginBottom: "10px" }}>
-                    <label>Year:</label><br />
-                    <input type="text" name="year" value={form.year} onChange={handleChange} style={{ width: "100%", padding: "8px", boxSizing: "border-box" }} />
+                    <label style={labelStyle}>Year:</label><br />
+                    <input type="text" name="year" value={form.year} onChange={handleChange} style={inputStyle} />
                     {errors.year && <span style={{ color: "red" }}>{errors.year}</span>}
                 </div>
 
                 <div style={{ marginBottom: "10px" }}>
-                    <label>CGPA:</label><br />
-                    <input type="number" name="cgpa" value={form.cgpa} onChange={handleChange} step="0.01" style={{ width: "100%", padding: "8px", boxSizing: "border-box" }} />
+                    <label style={labelStyle}>CGPA:</label><br />
+                    <input type="number" name="cgpa" value={form.cgpa} onChange={handleChange} step="0.01" style={inputStyle} />
                     {errors.cgpa && <span style={{ color: "red" }}>{errors.cgpa}</span>}
                 </div>
 
                 <div style={{ marginBottom: "10px" }}>
-                    <label>
-                        <input type="checkbox" name="isActive" checked={form.isActive} onChange={handleChange} /> Active Student
+                    <label style={checkboxLabelStyle}>
+                        <input type="checkbox" name="isActive" checked={form.isActive} onChange={handleChange} style={checkboxStyle} /> Active Student
                     </label>
                 </div>
 
                 <div style={{ marginBottom: "10px" }}>
-                    <label>Extracurricular:</label><br />
-                    <input type="checkbox" name="extracurriculars" value="Sports" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Sports")} /> Sports{" "}
-                    <input type="checkbox" name="extracurriculars" value="Music" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Music")} /> Music{" "}
-                    <input type="checkbox" name="extracurriculars" value="Arts" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Arts")} /> Arts{" "}
-                    <input type="checkbox" name="extracurriculars" value="Debate" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Debate")} /> Debate{" "}
-                    <input type="checkbox" name="extracurriculars" value="Volunteering" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Volunteering")} /> Volunteering {" "}
-                    <input type="checkbox" name="extracurriculars" value="Coding Club" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Coding Club")} /> Coding Club {" "}
-                    <input type="checkbox" name="extracurriculars" value="Robotics" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Robotics")} /> Robotics
+                    <label style={checkboxLabelStyle}>Extracurricular:</label><br />
+                    <span style={checkboxLabelStyle}>Sports{" "}</span><input type="checkbox" name="extracurriculars" value="Sports" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Sports")} style={checkboxStyle} /> 
+                    <span style={checkboxLabelStyle}>Music{" "}</span><input type="checkbox" name="extracurriculars" value="Music" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Music")} style={checkboxStyle} />
+                    <span style={checkboxLabelStyle}>Arts{" "}</span><input type="checkbox" name="extracurriculars" value="Arts" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Arts")} style={checkboxStyle} />
+                    <span style={checkboxLabelStyle}>Debate{" "}</span><input type="checkbox" name="extracurriculars" value="Debate" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Debate")} style={checkboxStyle} />
+                    <br /><span style={checkboxLabelStyle}>Volunteering{" "}</span><input type="checkbox" name="extracurriculars" value="Volunteering" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Volunteering")} style={checkboxStyle} />
+                    <span style={checkboxLabelStyle}>Coding Club{" "}</span><input type="checkbox" name="extracurriculars" value="Coding Club" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Coding Club")} style={checkboxStyle} />
+                    <span style={checkboxLabelStyle}>Robotics</span><input type="checkbox" name="extracurriculars" value="Robotics" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Robotics")} style={checkboxStyle} />
 
                 </div>
 
                 <div style={{ marginBottom: "10px" }}>
-                    <label>Grade: {grade}</label>
+                    <label style={labelStyle}>Grade: {grade}</label>
                 </div>
 
-                <button type="submit" style={{ marginTop: "10px", padding: "10px 20px" }}>
+                <button type="submit" style={{ marginTop: "10px", padding: "10px 20px", backgroundColor: "#5051a5", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}>
                     Submit
                 </button>
             </form>
 
             {submitted && (
-                <div style={{ marginTop: "20px", padding: "15px", backgroundColor: "#fcf8fc", borderRadius: "5px" }}>
-                    <h3>Submitted Data</h3>
-                    <p><strong>Name:</strong> {form.name}</p>
-                    <p><strong>Roll Number:</strong> {form.rollNumber}</p>
-                    <p><strong>Department:</strong> {form.department}</p>
-                    <p><strong>Year:</strong> {form.year}</p>
-                    <p><strong>CGPA:</strong> {form.cgpa}</p>
-                    <p><strong>Grade:</strong> {grade}</p>
-                    <p><strong>Status:</strong> {form.isActive ? "Active" : "Inactive"}</p>
-                    <p><strong>Extracurriculars:</strong> {form.extracurriculars.length > 0 ? form.extracurriculars.join(", ") : "None"}</p>
-                    <button type="button" onClick={() => setSubmitted(false)} style={{ marginTop: "10px", padding: "10px 20px" }}>
+                <div style={{ marginTop: "20px", padding: "15px", backgroundColor: "whitesmoke", borderRadius: "5px", border: "1px solid #ccc" }}>
+                    <h3 style={titleStyle}>Submitted Data</h3>
+                    <p style={labelStyle}><strong>Name:</strong> {form.name}</p>
+                    <br /><p style={labelStyle}><strong>Roll Number:</strong> {form.rollNumber}</p>
+                    <br /><p style={labelStyle}><strong>Department:</strong> {form.department}</p>
+                    <br /><p style={labelStyle}><strong>Year:</strong> {form.year}</p>
+                    <br /><p style={labelStyle}><strong>CGPA:</strong> {form.cgpa}</p>
+                    <br /><p style={labelStyle}><strong>Grade:</strong> {grade}</p>
+                    <br /><p style={labelStyle}><strong>Status:</strong> {form.isActive ? "Active" : "Inactive"}</p>
+                    <br /><p style={labelStyle}><strong>Extracurriculars:</strong> {form.extracurriculars.length > 0 ? form.extracurriculars.join(", ") : "None"}</p>
+                    <br /><button type="button" onClick={() => setSubmitted(false)} style={{ marginTop: "10px", padding: "10px 20px", backgroundColor: "#5051a5", color: "white", border: "none", borderRadius: "4px", cursor: "pointer" }}>
                         Edit
                     </button>
                 </div>
