@@ -6,7 +6,7 @@ function UserProfile() {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        fetch("")
+        fetch("https://jsonplaceholder.typicode.com/users/1")
             .then(response => response.json())
             .then(data => {
                 setUser(data);
