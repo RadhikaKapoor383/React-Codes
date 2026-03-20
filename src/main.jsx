@@ -1,10 +1,12 @@
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx';
 import ATM from './ATM-machine.jsx';
+import { ShoppingCart } from './Shopping-cart.jsx';
 
 createRoot(document.getElementById('root')).render(
   <div>
     {/* <App /> */}
-    <ATM />
+    {/* <ATM /> */}
+    <ShoppingCart />
   </div>
 )
