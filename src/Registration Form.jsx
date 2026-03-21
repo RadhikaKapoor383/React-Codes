@@ -128,6 +128,9 @@ function RegistrationForm() {
     };
     const errorStyle = {
         color: "red",
+        fontStyle: "italic",
+        width: "100%",
+        padding: "8px",
         fontSize: "0.9em",
         marginTop: "-8px",
         marginBottom: "10px"
@@ -144,19 +147,19 @@ function RegistrationForm() {
             <h2 style={titleStyle}>Student Registration Form</h2>
 
             <form onSubmit={handleSubmit}>
-                <div style={{ marginBottom: "10px" }}>
+                <div className='name' style={{ marginBottom: "10px" }}>
                     <label style={labelStyle}>Name:</label><br />
                     <input type="text" name="name" value={form.name} onChange={handleChange} style={inputStyle} />
                     {errors.name && <span style={errorStyle}>{errors.name}</span>}
                 </div>
 
-                <div style={{ marginBottom: "10px" }}>
+                <div className='roll-number' style={{ marginBottom: "10px" }}>
                     <label style={labelStyle}>Roll Number:</label><br />
                     <input type="text" name="rollNumber" value={form.rollNumber} onChange={handleChange} style={inputStyle} />
                     {errors.rollNumber && <span style={errorStyle}>{errors.rollNumber}</span>}
                 </div>
 
-                <div style={{ marginBottom: "10px" }}>
+                <div className='department' style={{ marginBottom: "10px" }}>
                     <label style={labelStyle}>Department:</label><br />
                     <select name="department" value={form.department} onChange={handleChange} style={radioLabelStyle}>
                         <option value="Computer Science" style={radioLabelStyle}>Computer Science</option>
@@ -171,25 +174,26 @@ function RegistrationForm() {
                     </select>
                 </div>
 
-                <div style={{ marginBottom: "10px" }}>
+                <div className='year' style={{ marginBottom: "10px" }}>
                     <label style={labelStyle}>Year:</label><br />
                     <input type="text" name="year" value={form.year} onChange={handleChange} style={inputStyle} />
                     {errors.year && <span style={errorStyle}>{errors.year}</span>}
                 </div>
 
-                <div style={{ marginBottom: "10px" }}>
+                <div className='cgpa' style={{ marginBottom: "10px" }}>
                     <label style={labelStyle}>CGPA:</label><br />
                     <input type="number" name="cgpa" value={form.cgpa} onChange={handleChange} step="0.01" style={inputStyle} />
                     {errors.cgpa && <span style={errorStyle}>{errors.cgpa}</span>}
                 </div>
 
-                <div style={{ marginBottom: "10px" }}>
+                <div className='is-active' style={{ marginBottom: "10px" }}>
                     <label style={checkboxLabelStyle}>
-                        <span style={checkboxLabelStyle}>Active Student:</span> <input type="checkbox" name="isActive" checked={form.isActive} onChange={handleChange} style={checkboxStyle} />
+                        <span style={checkboxLabelStyle}>Active Student:</span> 
+                        <input type="checkbox" name="isActive" checked={form.isActive} onChange={handleChange} style={checkboxStyle} />
                     </label>
                 </div>
 
-                <div style={{ marginBottom: "10px" }}>
+                <div className='extracurricular' style={{ marginBottom: "10px" }}>
                     <label style={checkboxLabelStyle}>Extracurricular:</label><br />
                     <span style={checkboxLabelStyle}>Sports{" "}</span><input type="checkbox" name="extracurriculars" value="Sports" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Sports")} style={checkboxStyle} />
                     <span style={checkboxLabelStyle}>Music{" "}</span><input type="checkbox" name="extracurriculars" value="Music" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Music")} style={checkboxStyle} />
