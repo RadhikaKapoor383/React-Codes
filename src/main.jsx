@@ -1,8 +1,8 @@
 import { createRoot } from 'react-dom/client';
-import RegistrationForm from './Registration Form.jsx';
+import StudentPortal from './Student-Portal.jsx';
 
 createRoot(document.getElementById('root')).render(
   <div>
-    <RegistrationForm />
+    <StudentPortal portalName="Student Portal" />
   </div>
 );
