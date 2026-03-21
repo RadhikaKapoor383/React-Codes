@@ -103,7 +103,7 @@ function RegistrationForm() {
         fontWeight: "bold",
         color: "#555",
         marginBottom: "10px",
-        gap: "15px", 
+        gap: "15px",
         display: "inline-flex",
         alignItems: "center",
         wrap: "wrap"
@@ -121,7 +121,7 @@ function RegistrationForm() {
         marginLeft: "1px",
         transform: "scale(1.2)",
         marginBottom: "10px",
-        gap: "15px", 
+        gap: "15px",
         display: "inline-flex",
         alignItems: "center",
         wrap: "wrap"
@@ -185,13 +185,13 @@ function RegistrationForm() {
 
                 <div style={{ marginBottom: "10px" }}>
                     <label style={checkboxLabelStyle}>
-                        <span style={checkboxLabelStyle}>Active Student:</span> <input type="checkbox" name="isActive" checked={form.isActive} onChange={handleChange} style={checkboxStyle} /> 
+                        <span style={checkboxLabelStyle}>Active Student:</span> <input type="checkbox" name="isActive" checked={form.isActive} onChange={handleChange} style={checkboxStyle} />
                     </label>
                 </div>
 
                 <div style={{ marginBottom: "10px" }}>
                     <label style={checkboxLabelStyle}>Extracurricular:</label><br />
-                    <span style={checkboxLabelStyle}>Sports{" "}</span><input type="checkbox" name="extracurriculars" value="Sports" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Sports")} style={checkboxStyle} /> 
+                    <span style={checkboxLabelStyle}>Sports{" "}</span><input type="checkbox" name="extracurriculars" value="Sports" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Sports")} style={checkboxStyle} />
                     <span style={checkboxLabelStyle}>Music{" "}</span><input type="checkbox" name="extracurriculars" value="Music" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Music")} style={checkboxStyle} />
                     <span style={checkboxLabelStyle}>Arts{" "}</span><input type="checkbox" name="extracurriculars" value="Arts" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Arts")} style={checkboxStyle} />
                     <span style={checkboxLabelStyle}>Debate{" "}</span><input type="checkbox" name="extracurriculars" value="Debate" onChange={handleExtracurricularChange} checked={form.extracurriculars.includes("Debate")} style={checkboxStyle} />
