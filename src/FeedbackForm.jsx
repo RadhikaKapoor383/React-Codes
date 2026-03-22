@@ -56,6 +56,19 @@ function FeedbackForm() {
         borderRadius: "8px", fontSize: "16px",
         cursor: "pointer"
     }
+    if (submitted) {
+        return (
+            <div style={formStyle}>
+                <h2 style={{ textAlign: "center" }}>Thank you, {form.name}! 🎉</h2>
+                <p>⭐ Rating: {form.rating}</p>
+                <p>✉️ Email: {form.email}</p>
+                <p>💬 Message: {form.message}</p>
+                <button onClick={() => setSubmitted(false)} style={buttonStyle}>
+                    Submit Another 📝
+                </button>
+            </div>
+        );
+    }
     return (
         <div>
             <form style={formStyle} onSubmit={handleSubmit}>
@@ -81,16 +94,6 @@ function FeedbackForm() {
                 />
                 <button type="submit" style={buttonStyle}>Submit</button>
             </form>
-            {submitted && (
-                <div style={formStyle}>
-                <h2>Thank you, {form.name}! 🎉</h2>
-                <p>Rating: {form.rating}</p>
-                <p>Message: {form.message}</p>
-                <button onClick={() => setSubmitted(false)} style={buttonStyle}>
-                    Submit Another
-                </button>
-            </div>
-            )}
         </div>
 
     );
