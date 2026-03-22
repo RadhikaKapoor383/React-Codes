@@ -1,8 +1,8 @@
 import { createRoot } from 'react-dom/client';
-import StudentPortal from './Student-Portal.jsx';
+import TrafficLight from './Traffic-Light.jsx';
 
 createRoot(document.getElementById('root')).render(
   <div>
-    <StudentPortal portalName="Student Portal" />
+    <TrafficLight />
   </div>
 );
