@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 function TypingTest() {
-    const [targetText] = "The quick brown fox.";
+    const targetText = "The quick brown fox.";
     const [typed, setTyped] = useState("");
     const [timer, setTimer] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
@@ -15,23 +15,28 @@ function TypingTest() {
 
         return () => clearInterval(interval);
     }, [isRunning]);
+
     function handleTyping(e) {
         const value = e.target.value;
         setTyped(value);
 
-        if (value.length === 1) {
+        if (!isRunning && value.length > 0) {
             setIsRunning(true);
         }
-        if (typed === targetText) {
+
+        if (value === targetText) {
             setIsRunning(false);
             setFinish(true);
+        } else {
+            setFinish(false);
         }
     }
-    const accuracy = typed.split("").filter(
+
+    const accuracyMatch = typed.split("").filter(
         (char, i) => char === targetText[i]
     ).length;
-    const accuracyParcent = typed.length > 0
-        ? Math.rount((accuracy / target.length) * 100)
+    const accuracyPercent = typed.length > 0
+        ? Math.round((accuracyMatch / targetText.length) * 100)
         : 0;
 
     function handleReset() {
@@ -48,7 +53,32 @@ function TypingTest() {
                 fontSize: "18px", letterSpacing: "1px",
                 marginBottom: "15px", color: "#666"
             }}>{targetText}</p>
-            <textarea></textarea>
+            <textarea placeholder="Enter your text here..." onChange={handleTyping}
+                name="message" rows={5} value={typed}
+                style={{
+                    width: "100%", padding: "12px",
+                    fontSize: "18px", borderRadius: "8px",
+                    border: "2px solid #4F46E5",
+                    boxSizing: "border-box", resize: "none"
+                }} />
+            <p style={{
+                display: "inline-block",
+                backgroundColor: "#4F46E5", color: "white",
+                padding: "5px 15px", borderRadius: "20px",
+                fontSize: "18px", marginBottom: "15px"
+            }}>{timer}s</p>
+            {finished && <p style={{
+                padding: "15px", borderRadius: "8px",
+                fontSize: "18px", letterSpacing: "1px",
+                marginBottom: "15px", color: "#666"
+            }}>Done! ⏱️ {timer} seconds <br /> Accuracy % {accuracyPercent}</p>}
+            <button style={{
+                display: "inline-block",
+                backgroundColor: "#4F46E5", color: "white",
+                padding: "5px 15px", borderRadius: "20px",
+                fontSize: "18px", marginBottom: "15px", cursor: "pointer"
+            }} onClick={handleReset}>Reset Button</button>
         </div>
     )
 }
+export default TypingTest;
