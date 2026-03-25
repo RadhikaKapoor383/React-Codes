@@ -27,7 +27,5 @@ function TypingTest() {
             setFinished(true);
         }
     }
-    function Calculate() {
-        
-    }
+    
 }
