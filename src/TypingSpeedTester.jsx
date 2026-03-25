@@ -15,14 +15,14 @@ function TypingTest() {
 
         return () => clearInterval(interval);
     }, [isRunning]);
-    function handleTyping (e) {
+    function handleTyping(e) {
         const value = e.target.value;
         setTyped(value);
 
-        if(value.length === 1) {
+        if (value.length === 1) {
             setIsRunning(true);
         }
-        if(typed === targetText) {
+        if (typed === targetText) {
             setIsRunning(false);
             setFinish(true);
         }
@@ -31,13 +31,24 @@ function TypingTest() {
         (char, i) => char === targetText[i]
     ).length;
     const accuracyParcent = typed.length > 0
-    ? Math.rount((accuracy / target.length) * 100)
-    : 0;
-    
+        ? Math.rount((accuracy / target.length) * 100)
+        : 0;
+
     function handleReset() {
         setTyped("");
         setFinish(false);
         setIsRunning(false);
         setTimer(0);
     }
+    return (
+        <div>
+            <p style={{
+                backgroundColor: "#f5f5f5",
+                padding: "15px", borderRadius: "8px",
+                fontSize: "18px", letterSpacing: "1px",
+                marginBottom: "15px", color: "#666"
+            }}>{targetText}</p>
+            <textarea></textarea>
+        </div>
+    )
 }
