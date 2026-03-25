@@ -4,7 +4,7 @@ function TypingTest() {
     const [typed, setTyped] = useState("");
     const [timer, setTimer] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
-    const [finished, setFinished] = useState(false);
+    const [finished, setFinish] = useState(false);
 
     useEffect(() => {
         if (!isRunning) return;
@@ -24,7 +24,7 @@ function TypingTest() {
         }
         if(typed === targetText) {
             setIsRunning(false);
-            setFinished(true);
+            setFinish(true);
         }
     }
     const accuracy = typed.split("").filter(
@@ -34,4 +34,10 @@ function TypingTest() {
     ? Math.rount((accuracy / target.length) * 100)
     : 0;
     
+    function handleReset() {
+        setTyped("");
+        setFinish(false);
+        setIsRunning(false);
+        setTimer(0);
+    }
 }
