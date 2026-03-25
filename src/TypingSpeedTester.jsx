@@ -27,5 +27,11 @@ function TypingTest() {
             setFinished(true);
         }
     }
+    const accuracy = typed.split("").filter(
+        (char, i) => char === targetText[i]
+    ).length;
+    const accuracyParcent = typed.length > 0
+    ? Math.rount((accuracy / target.length) * 100)
+    : 0;
     
 }
