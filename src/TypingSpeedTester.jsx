@@ -21,8 +21,8 @@ function TypingTest() {
         setTyped(value);
 
         if (value.length === 0) {
-            setIsRunning(false);  // ← typed khaali → timer rok do
-            setTimer(0);          // ← timer reset karo
+            setIsRunning(false);  
+            setTimer(0);          
             return;
         }
         if (!isRunning && value.length > 0) {
