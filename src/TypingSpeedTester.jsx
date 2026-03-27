@@ -20,6 +20,11 @@ function TypingTest() {
         const value = e.target.value;
         setTyped(value);
 
+        if (value.length === 0) {
+            setIsRunning(false);  // ← typed khaali → timer rok do
+            setTimer(0);          // ← timer reset karo
+            return;
+        }
         if (!isRunning && value.length > 0) {
             setIsRunning(true);
         }
@@ -46,7 +51,13 @@ function TypingTest() {
         setTimer(0);
     }
     return (
-        <div>
+        <div style={{
+            maxWidth: "600px", margin: "30px auto",
+            padding: "25px", borderRadius: "15px",
+            backgroundColor: "#fafafa",
+            boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
+            fontFamily: "Arial"
+        }}>
             <p style={{
                 backgroundColor: "#f5f5f5",
                 padding: "15px", borderRadius: "8px",
