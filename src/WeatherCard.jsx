@@ -9,22 +9,61 @@ function WeatherCard() {
     //C = Celsius, F = Fahrenheit
 
     useEffect(() => {
+        if (!city.trim()) return;  // ← khaali city skip karo
+
         setLoading(true);
         setError("");
+        setWeather(null);
 
-        fetch(`https://wttr.in/${city}?format=j1`)
+        fetch(`https://nominatim.openstreetmap.org/search?q=${city}&format=json&limit=1`)
+            .then(res => res.json())
+            .then(locationData => {
+                if (locationData.length === 0) {
+                    throw new Error("City not found");
+                }
+                const result = locationData[0];
+                const validTypes = [
+                    "city", "town", "village",
+                    "municipality", "administrative"
+                ];
+                if (!validTypes.includes(result.type) &&
+                    !validTypes.includes(result.class)) {
+                    throw new Error("Not a city");
+                }
+                const invalidTypes = [
+                    "person", "country", "continent",
+                    "ocean", "peak", "river", "road",
+                    "house", "building", "amenity"
+                ];
+
+                if (invalidTypes.includes(result.type)) {
+                    throw new Error("Not a valid city");
+                }
+                return fetch(`https://wttr.in/${city}?format=j1`);
+            })
             .then(res => res.json())
             .then(data => {
+                if (!data.current_condition) throw new Error("No data");
                 setWeather(data);
                 setLoading(false);
             })
             .catch(() => {
-                setError("City not found ❌");
+                setError("City not found ❌ Please try another city");
                 setLoading(false);
             });
+
     }, [city]);
 
     function handleSearch() {
+        if (input.trim() === "") {
+            setError("Please enter a city name ❌");
+            return;
+        }
+        // Numbers only nahi hona chahiye
+        if (/^\d+$/.test(input)) {
+            setError("Please enter a valid city name ❌");
+            return;
+        }
         setCity(input);
     }
     const current = weather?.current_condition?.[0];
