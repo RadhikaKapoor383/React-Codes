@@ -24,8 +24,7 @@ function WeatherCard() {
     }, [city]);
 
     const [input, setInput] = useState("Karachi");
-    function handleSubmit(e) {
-        e.preventDefault();
+    function handleSubmit() {
         setCity(input);
     }
     function handleSearch() {
@@ -45,21 +44,46 @@ function WeatherCard() {
             boxShadow: "0 8px 32px rgba(0,0,0,0.3)"
         }}>
             <h2>Weather in {city}</h2>
-            <input
-                style={{
-                    display: "flex", gap: "10px",
-                    marginBottom: "20px"
-                }}
-                type="text"
-                value={input}
-                onChange={e => setInput(e.target.value)}
-                placeholder="Enter city name"
-                onKeyDown={(e) => {
-                    if (e.key === "Enter") handleSearch();
-                }}
-            />
-            <button onClick={handleSubmit}>Get Weather</button>
-            <button onClick={() => setUnit(unit === "C" ? "F" : "C")}>
+            <div style={{
+                display: "flex", gap: "10px",
+                marginBottom: "20px"
+            }}>
+                <input
+                    style={{
+                        flex: 1, padding: "10px",
+                        borderRadius: "8px", border: "none",
+                        fontSize: "16px", outline: "none"
+                    }}
+                    type="text"
+                    value={input}
+                    onChange={e => setInput(e.target.value)}
+                    placeholder="Enter city name"
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") handleSearch();
+                    }}
+                />
+                <button style={{
+                    padding: "18px 16px", borderRadius: "20px",
+                    border: "2px solid white", background: "transparent",
+                    color: "white", cursor: "pointer",
+                    fontWeight: "bold"
+                }} onSubmit={handleSubmit}>Search</button>
+            </div>
+            {loading && <p style={{
+                fontSize: "8px", fontWeight: "bold",
+                textAlign: "center", margin: "20px 0"
+            }}>Fetching weather... ⏳</p>}
+            {error && <p style={{
+                fontSize: "18px",
+                margin: "20px 0",
+                color: "Red"
+            }}>{error}</p>}
+            <button style={{
+                padding: "18px 16px", borderRadius: "20px",
+                border: "2px solid white", background: "transparent",
+                color: "white", cursor: "pointer",
+                fontWeight: "bold"
+            }} onClick={() => setUnit(unit === "C" ? "F" : "C")}>
                 Switch to {unit === "C" ? "Fahrenheit" : "Celsius"}
             </button>
             {weather && (
@@ -69,7 +93,6 @@ function WeatherCard() {
                         textAlign: "center", margin: "20px 0"
                     }}
                     >Temperature: {displayTemp}</p>
-                    <p>Description: {weather.weather[0].description}</p>
                 </div>
             )}
         </div>
