@@ -4,6 +4,7 @@ function WeatherCard() {
     const [weather, setWeather] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [input, setInput] = useState("Karachi");
     const [unit, setUnit] = useState("C");
     //C = Celsius, F = Fahrenheit
 
@@ -23,14 +24,14 @@ function WeatherCard() {
             });
     }, [city]);
 
-    const [input, setInput] = useState("Karachi");
-    function handleSubmit() {
-        setCity(input);
-    }
     function handleSearch() {
         setCity(input);
     }
-    const tempC = Number(weather?.current_condition[0].temp_C);
+    const current = weather?.current_condition?.[0];
+    const tempC = Number(current?.temp_C ?? 0);
+    const desc = current?.weatherDesc[0].value ?? "";
+    const humidity = current?.humidity ?? "";
+    const wind = current?.windspeedKmph ?? "";
     const displayTemp = unit === "C"
         ? `${tempC} °C`
         : `${(tempC * 9 / 5 + 32).toFixed(1)} °F`;
@@ -43,7 +44,7 @@ function WeatherCard() {
             color: "white", fontFamily: "Arial",
             boxShadow: "0 8px 32px rgba(0,0,0,0.3)"
         }}>
-            <h2>Weather in {city}</h2>
+            <h2 style={{ textAlign: "center" }}>🌤️ Weather in {city}</h2>
             <div style={{
                 display: "flex", gap: "10px",
                 marginBottom: "20px"
@@ -58,26 +59,15 @@ function WeatherCard() {
                     value={input}
                     onChange={e => setInput(e.target.value)}
                     placeholder="Enter city name"
-                    onKeyDown={(e) => {
-                        if (e.key === "Enter") handleSearch();
-                    }}
+                    onKeyDown={e => e.key === "Enter" && handleSearch()}
                 />
                 <button style={{
                     padding: "18px 16px", borderRadius: "20px",
                     border: "2px solid white", background: "transparent",
                     color: "white", cursor: "pointer",
                     fontWeight: "bold"
-                }} onSubmit={handleSubmit}>Search</button>
+                }} onClick={handleSearch}>Search 🔍</button>
             </div>
-            {loading && <p style={{
-                fontSize: "8px", fontWeight: "bold",
-                textAlign: "center", margin: "20px 0"
-            }}>Fetching weather... ⏳</p>}
-            {error && <p style={{
-                fontSize: "18px",
-                margin: "20px 0",
-                color: "Red"
-            }}>{error}</p>}
             <button style={{
                 padding: "18px 16px", borderRadius: "20px",
                 border: "2px solid white", background: "transparent",
@@ -86,15 +76,36 @@ function WeatherCard() {
             }} onClick={() => setUnit(unit === "C" ? "F" : "C")}>
                 Switch to {unit === "C" ? "Fahrenheit" : "Celsius"}
             </button>
-            {weather && (
+            {loading ? (
+                <p style={{ fontSize: "18px", textAlign: "center" }}>
+                    Fetching weather... ⏳
+                </p>
+            ) : error ? (
+                <p style={{
+                    fontSize: "18px", color: "#FFB3B3",
+                    textAlign: "center"
+                }}>
+                    {error}
+                </p>
+            ) : weather ? (
                 <div>
                     <p style={{
-                        fontSize: "24px", fontWeight: "bold",
-                        textAlign: "center", margin: "20px 0"
-                    }}
-                    >Temperature: {displayTemp}</p>
+                        fontSize: "46px", fontWeight: "bold",
+                        textAlign: "center", margin: "10px 0"
+                    }}>
+                        {displayTemp}
+                    </p>
+                    <p style={{ fontSize: "22px", textAlign: "center" }}>
+                        {desc}
+                    </p>
+                    <p style={{
+                        fontSize: "16.75px", textAlign: "center",
+                        opacity: 0.85, marginTop: "10px"
+                    }}>
+                        💧 Humidity: {humidity}% &nbsp;|&nbsp; 💨 Wind: {wind} km/h
+                    </p>
                 </div>
-            )}
+            ) : null}
         </div>
     );
 }
