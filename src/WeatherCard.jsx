@@ -23,17 +23,17 @@ function WeatherCard() {
                 }
                 const result = locationData[0];
                 const validTypes = [
-                    "city", "town", "village",
-                    "municipality", "administrative"
+                    "city", "town", "village", 
+                    "country", "continent", "ocean", "river"
                 ];
                 if (!validTypes.includes(result.type) &&
                     !validTypes.includes(result.class)) {
                     throw new Error("Not a city");
                 }
                 const invalidTypes = [
-                    "person", "country", "continent",
-                    "ocean", "peak", "river", "road",
-                    "house", "building", "amenity"
+                    "person", "peak", "road",
+                    "house", "building", "amenity" ,
+                    "municipality", "administrative"
                 ];
 
                 if (invalidTypes.includes(result.type)) {
