@@ -20,25 +20,7 @@ function WeatherCard() {
             .then(locationData => {
                 if (locationData.length === 0) {
                     throw new Error("City not found");
-                }
-                const result = locationData[0];
-                const validTypes = [
-                    "city", "town", "village", 
-                    "country", "continent", "ocean", "river"
-                ];
-                if (!validTypes.includes(result.type) &&
-                    !validTypes.includes(result.class)) {
-                    throw new Error("Not a city");
-                }
-                const invalidTypes = [
-                    "person", "peak", "road",
-                    "house", "building", "amenity" ,
-                    "municipality", "administrative"
-                ];
-
-                if (invalidTypes.includes(result.type)) {
-                    throw new Error("Not a valid city");
-                }
+                }             
                 return fetch(`https://wttr.in/${city}?format=j1`);
             })
             .then(res => res.json())
