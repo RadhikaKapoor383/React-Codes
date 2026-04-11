@@ -85,7 +85,7 @@ function UniversityApplicationForm() {
         fontFamily: "Arial", backgroundColor: "white",
         textAlign: "center"
       }}>
-        <h2 style={{ color: "#4F46E5" }}>
+        <h2 style={{ color: "#860575" }}>
           Application Submitted! 🎉
         </h2>
         <p style={{ color: "#666" }}>Welcome, {form.name}!</p>
@@ -119,7 +119,7 @@ function UniversityApplicationForm() {
       fontFamily: "Arial", backgroundColor: "white"
     }}>
       <h2 style={{
-        color: "#4F46E5", marginBottom: "10px",
+        color: "#860575", marginBottom: "10px",
         borderBottom: "2px solid #eee", paddingBottom: "10px"
       }}>
         🎓 University Application
@@ -136,7 +136,7 @@ function UniversityApplicationForm() {
                     borderRadius: "10px", marginBottom: "25px" }}>
         <div style={{
           width: `${progress}%`,
-          backgroundColor: "#4F46E5",
+          backgroundColor: "#860575",
           height: "8px", borderRadius: "10px",
           transition: "width 0.4s ease"
         }} />
@@ -145,7 +145,7 @@ function UniversityApplicationForm() {
       {/* Step 1 */}
       {step === 1 && (
         <div>
-          <h3 style={{ color: "#4F46E5", marginBottom: "15px" }}>
+          <h3 style={{ color: "#860575", marginBottom: "15px" }}>
             👤 Personal Info
           </h3>
           <label style={labelStyle}>Name:</label>
