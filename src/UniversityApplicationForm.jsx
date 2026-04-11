@@ -90,10 +90,10 @@ function UniversityApplicationForm() {
         fontFamily: "Arial", backgroundColor: "white",
         textAlign: "center"
       }}>
-        <h2 style={{ color: "#860575" }}>
+        <h2 style={{ color: "#860575", textAlign: "center" }}>
           Application Submitted! 🎉
         </h2>
-        <p style={{ color: "#666" }}>Welcome, {form.name}!</p>
+        <p style={{ color: "#751d46", textAlign: "center" }}>Welcome, {form.name}!</p>
         {[
           ["Name", form.name],
           ["Age", form.age],
@@ -105,7 +105,7 @@ function UniversityApplicationForm() {
         ].map(([label, value]) => (
           <div key={label} style={{
             display: "flex", justifyContent: "space-between",
-            padding: "10px 0", borderBottom: "1px solid #eee",
+            padding: "10px 0", borderBottom: "1px solid #facef8",
             textAlign: "left"
           }}>
             <strong>{label}:</strong>
