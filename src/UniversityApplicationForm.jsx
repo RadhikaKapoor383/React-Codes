@@ -1,21 +1,21 @@
 import { useState } from 'react';
 
 function UniversityApplicationForm() {
-  const [step, setStep]           = useState(1);
-  const [form, setForm]           = useState({
+  const [step, setStep] = useState(1);
+  const [form, setForm] = useState({
     name: '', age: '', email: '',
     degree: "Bachelor's",
     university: '', cgpa: '',
     graduationYear: ''
   });
-  const [errors, setErrors]       = useState({});
+  const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
   function handleChange(e) {
     const { name, value } = e.target;
     setForm(prev => ({ ...prev, [name]: value }));
   }
-
+  const currentYear = new Date().getFullYear();
   function validateStep() {
     const newErrors = {};
     if (step === 1) {
@@ -29,9 +29,16 @@ function UniversityApplicationForm() {
     if (step === 2) {
       if (!form.university.trim())
         newErrors.university = "University required ❌";
-      if (!form.graduationYear || form.graduationYear < 1990
-          || form.graduationYear > new Date().getFullYear())
-        newErrors.graduationYear = "Valid year required ❌";
+      if (!form.graduationYear) {
+        newErrors.graduationYear = "Graduation year required ❌";
+      }
+      else if (
+        Number(form.graduationYear) < 1970 ||
+        Number(form.graduationYear) > currentYear + 6
+      ) {
+        newErrors.graduationYear =
+          `Year must be between 1970 and ${currentYear + 6} ❌`;
+      }
       if (!form.cgpa)
         newErrors.cgpa = "CGPA required ❌";
       else if (Number(form.cgpa) < 0 || Number(form.cgpa) > 4)
@@ -54,7 +61,6 @@ function UniversityApplicationForm() {
     setErrors({});
   }
 
-  // ✅ Fix 1 & 2 — progress bar sahi
   const progress = (step / 3) * 100;
 
   const inputStyle = (errorKey) => ({
@@ -75,7 +81,6 @@ function UniversityApplicationForm() {
     textAlign: "left"
   };
 
-  // ✅ Fix 6 — submitted hone par sirf success
   if (submitted) {
     return (
       <div style={{
@@ -126,14 +131,18 @@ function UniversityApplicationForm() {
       </h2>
 
       {/* Step Indicator */}
-      <p style={{ textAlign: "center", color: "#666",
-                  fontSize: "14px", marginBottom: "10px" }}>
+      <p style={{
+        textAlign: "center", color: "#666",
+        fontSize: "14px", marginBottom: "10px"
+      }}>
         Step {step} of 3
       </p>
 
       {/* ✅ Fix 1 & 2 — Progress Bar */}
-      <div style={{ backgroundColor: "#eee", height: "8px",
-                    borderRadius: "10px", marginBottom: "25px" }}>
+      <div style={{
+        backgroundColor: "#eee", height: "8px",
+        borderRadius: "10px", marginBottom: "25px"
+      }}>
         <div style={{
           width: `${progress}%`,
           backgroundColor: "#860575",
@@ -189,6 +198,9 @@ function UniversityApplicationForm() {
           <label style={labelStyle}>Graduation Year:</label>
           <input type="number" name="graduationYear"
             value={form.graduationYear} onChange={handleChange}
+            min={1970}
+            max={new Date().getFullYear() + 6}
+            placeholder={`1970 - ${new Date().getFullYear() + 6}`}
             style={inputStyle("graduationYear")} />
           {errors.graduationYear &&
             <p style={errorStyle}>{errors.graduationYear}</p>}
@@ -228,8 +240,10 @@ function UniversityApplicationForm() {
       )}
 
       {/* Navigation Buttons */}
-      <div style={{ display: "flex", justifyContent: "space-between",
-                    marginTop: "25px", gap: "10px" }}>
+      <div style={{
+        display: "flex", justifyContent: "space-between",
+        marginTop: "25px", gap: "10px"
+      }}>
         {step > 1 && (
           <button onClick={handleBack} style={{
             padding: "10px 20px", borderRadius: "8px",
