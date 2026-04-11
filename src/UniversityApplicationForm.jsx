@@ -252,7 +252,7 @@ function UniversityApplicationForm() {
         {step === 3 && (
           <button onClick={() => setSubmitted(true)} style={{
             padding: "10px 25px", borderRadius: "8px",
-            backgroundColor: "#16A34A", color: "white",
+            backgroundColor: "#facef8", color: "#860575",
             border: "none", cursor: "pointer",
             fontSize: "15px", marginLeft: "auto"
           }}>
