@@ -168,7 +168,7 @@ function UniversityApplicationForm() {
       {/* Step 2 */}
       {step === 2 && (
         <div>
-          <h3 style={{ color: "#4F46E5", marginBottom: "15px" }}>
+          <h3 style={{ color: "#860575", marginBottom: "15px" }}>
             🎓 Academic Info
           </h3>
           <label style={labelStyle}>Degree:</label>
@@ -204,7 +204,7 @@ function UniversityApplicationForm() {
       {/* ✅ Fix 3 — Step 3 Review */}
       {step === 3 && (
         <div>
-          <h3 style={{ color: "#4F46E5", marginBottom: "15px" }}>
+          <h3 style={{ color: "#860575", marginBottom: "15px" }}>
             📋 Review Your Application
           </h3>
           {[
@@ -233,8 +233,8 @@ function UniversityApplicationForm() {
         {step > 1 && (
           <button onClick={handleBack} style={{
             padding: "10px 20px", borderRadius: "8px",
-            border: "2px solid #4F46E5", backgroundColor: "white",
-            color: "#4F46E5", cursor: "pointer", fontSize: "15px"
+            border: "2px solid #860575", backgroundColor: "white",
+            color: "#860575", cursor: "pointer", fontSize: "15px"
           }}>
             ← Back
           </button>
@@ -242,7 +242,7 @@ function UniversityApplicationForm() {
         {step < 3 && (
           <button onClick={handleNext} style={{
             padding: "10px 25px", borderRadius: "8px",
-            backgroundColor: "#4F46E5", color: "white",
+            backgroundColor: "#860575", color: "white",
             border: "none", cursor: "pointer",
             fontSize: "15px", marginLeft: "auto"
           }}>
