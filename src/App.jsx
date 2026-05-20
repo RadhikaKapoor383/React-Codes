@@ -56,6 +56,8 @@ function BookTracker({ bookTitle = "", totalPages = 200 }) {
             <p>Status: {status}</p>
             <button onClick={handlePagesReadChange} style={{ margin: "2px", padding: "2px" }}>Read 10 Pages</button>
             <button onClick={handlePageReadChangeMore} style={{ margin: "2px", padding: "2px" }}>Read 25 Pages</button>
+            <button onClick={() => setPagesRead(totalPages / 2)} style={{ margin: "2px", padding: "2px" }}>Halfway There</button>
+            <button onClick={() => setPagesRead(totalPages)} style={{ margin: "2px", padding: "2px" }}>Finish Book</button>
             <button onClick={handleReset} style={{ margin: "2px", padding: "2px" }}>Reset Progress</button>
         </div>
     )
@@ -67,6 +69,7 @@ export default function App() {
             <BookTracker bookTitle="To Kill a Mockingbird" totalPages={281} />
             <BookTracker bookTitle="1984" totalPages={358} />
             <BookTracker bookTitle="The Catcher in the Rye" totalPages={214} />
+            <BookTracker bookTitle="Atomic Habits" totalPages={320} />
         </div>
     );
 }

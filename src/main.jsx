@@ -3,9 +3,10 @@ import WeatherCard from './WeatherCard.jsx';
 import Trafficlight from './Traffic-LightApp.jsx';
 import UniversityApplicationForm from './UniversityApplicationForm.jsx';
 import UserCard from './life-cycle/user-data-fetcher.jsx';
+import App from './App.jsx';
 
 createRoot(document.getElementById('root')).render(
   <div>
-    <UserCard />
+    <App />
   </div>
 );
